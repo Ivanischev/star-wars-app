@@ -11,7 +11,7 @@ class App extends Component {
       error: null,
       isLoading: false,
       show: false,
-      activeComponent: null,
+      activeComponent: 'peoples',
     }
   }
 
@@ -29,7 +29,7 @@ class App extends Component {
   }
 
   render() {
-    let activeComponent = null
+    let activeComponent = 'peoples'
 
     if (this.state.activeComponent === 'planets') {
       activeComponent = <Planets />

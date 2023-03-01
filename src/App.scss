@@ -24,6 +24,21 @@ a {
   min-width: 100%;
   background: #303030;
   border-bottom: 0.5px solid #545454;
+  button {
+    font-size: 15px;
+    font-weight: 600;
+    background: transparent;
+    color: orange;
+    border: none;
+    padding: 5px 10px;
+    min-width: 70px;
+    cursor: pointer;
+    &:hover {
+      // border-bottom: 2px solid orange;
+      // opacity: 0.8;
+      color: #fff;
+    }
+  }
 }
 
 @keyframes App-logo-spin {
