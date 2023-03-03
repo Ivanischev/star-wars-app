@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { ListItem } from './ListItem'
+import { CardPeople } from './Card/CardPeople'
 
-class People extends Component {
+export class People extends Component {
   constructor(props) {
     super(props)
     this.state = {
       heroes: [],
       person: null,
       hasError: false,
+      isLoading: false,
     }
   }
 
@@ -53,6 +55,7 @@ class People extends Component {
   }
 
   render() {
+    let person = this.state.person
     return (
       <>
         <h1>People</h1>
@@ -65,19 +68,17 @@ class People extends Component {
           {this.state.hasError ? (
             'Not Found'
           ) : (
-            <div className="card">
-              <h3>{this.state.person?.name}</h3>
-              <p>Gender: {this.state.person?.gender}</p>
-              <p>Birth Year: {this.state.person?.birth_year}</p>
-              <p>Height: {this.state.person?.height}</p>
-              <p>Mass: {this.state.person?.mass}</p>
-              <p>Eye Color: {this.state.person?.eye_color}</p>
-            </div>
+            <CardPeople
+              name={person?.name}
+              gender={person?.gender}
+              birthYear={person?.birth_year}
+              height={person?.height}
+              mass={person?.mass}
+              eyeColor={person?.eye_color}
+            />
           )}
         </div>
       </>
     )
   }
 }
-
-export default People

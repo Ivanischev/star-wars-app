@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { ListItem } from './ListItem'
+import { CardPlanet } from './Card/CardPlanet'
 
-class Planets extends Component {
+export class Planets extends Component {
   constructor(props) {
     super(props)
     this.state = {
       planets: [],
       planet: null,
       hasError: false,
+      isLoading: false,
     }
   }
 
@@ -42,7 +44,7 @@ class Planets extends Component {
         rotation_period: data.rotation_period,
         population: data.population,
         terrain: data.terrain,
-        climatemass: data.climate,
+        climate: data.climate,
       },
     })
   }
@@ -64,18 +66,16 @@ class Planets extends Component {
           {this.state.hasError ? (
             'Not Found'
           ) : (
-            <div className="card">
-              <h3>{this.state.planet?.name}</h3>
-              <p>Rotation period: {this.state.planet?.rotation_period}</p>
-              <p>Population: {this.state.planet?.population}</p>
-              <p>Terrain: {this.state.planet?.terrain}</p>
-              <p>Climatemass: {this.state.planet?.maclimatemassss}</p>
-            </div>
+            <CardPlanet
+              name={this.state.planet?.name}
+              rotation_period={this.state.planet?.rotation_period}
+              population={this.state.planet?.population}
+              terrain={this.state.planet?.terrain}
+              climate={this.state.planet?.climate}
+            />
           )}
         </div>
       </>
     )
   }
 }
-
-export default Planets

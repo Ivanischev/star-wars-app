@@ -1,8 +1,8 @@
 import './App.scss'
 import React, { Component } from 'react'
-import People from './components/People'
-import Starships from './components/Starships'
-import Planets from './components/Planets'
+import { People } from './components/People'
+import { Starships } from './components/Starships'
+import { Planets } from './components/Planets'
 
 class App extends Component {
   constructor(props) {

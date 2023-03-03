@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { ListItem } from './ListItem'
+import { CardStarship } from './Card/CardStarship'
 
-class Starships extends Component {
+export class Starships extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -68,19 +69,17 @@ class Starships extends Component {
               <h4>No Information</h4>
             </div>
           ) : (
-            <div className="card">
-              <h3>{this.state.starship?.name}</h3>
-              <p>Cost: {this.state.starship?.cost_in_credits}</p>
-              <p>Hyperdrive Rating: {this.state.starship?.hyperdrive_rating}</p>
-              <p>Passengers: {this.state.starship?.passengers}</p>
-              <p>Manufacturer: {this.state.starship?.manufacturer}</p>
-              <p>Model: {this.state.starship?.model}</p>
-            </div>
+            <CardStarship
+              name={this.state.starship?.name}
+              cost_in_credits={this.state.starship?.cost_in_credits}
+              hyperdrive_rating={this.state.starship?.hyperdrive_rating}
+              passengers={this.state.starship?.passengers}
+              manufacturer={this.state.starship?.manufacturer}
+              model={this.state.starship?.model}
+            />
           )}
         </div>
       </>
     )
   }
 }
-
-export default Starships
