@@ -1,16 +1,13 @@
 import './App.scss'
 import React, { Component } from 'react'
-import People from './People'
-import Starships from './Starships'
-import Planets from './Planets'
+import People from './components/People'
+import Starships from './components/Starships'
+import Planets from './components/Planets'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      error: null,
-      isLoading: false,
-      show: false,
       activeComponent: 'peoples',
     }
   }
@@ -19,9 +16,6 @@ class App extends Component {
     this.setState({ activeComponent: 'peoples' })
   }
   showPlanets = () => {
-    // this.setState({
-    //   show: true,
-    // })
     this.setState({ activeComponent: 'planets' })
   }
   showStarships = () => {
@@ -45,9 +39,6 @@ class App extends Component {
           <button onClick={this.showStarships}>Starships</button>
           <button onClick={this.showPlanets}>Planets</button>
         </div>
-
-        {/* <button onClick={() => this.showPlanets()}>Planets</button> */}
-        {/* {this.state.show ? <div>Not Found</div> : <People />} */}
         {activeComponent}
       </div>
     )
