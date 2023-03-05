@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { ListItem } from './ListItem'
-import { CardStarship } from './Card/CardStarship'
+import { ListItem } from '../components/ListItem'
+import { CardStarship } from '../components/Card/CardStarship'
 
 export class Starships extends Component {
   constructor(props) {

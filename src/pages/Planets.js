@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { ListItem } from './ListItem'
-import { CardPlanet } from './Card/CardPlanet'
+import { ListItem } from '../components/ListItem'
+import { CardPlanet } from '../components/Card/CardPlanet'
 
 export class Planets extends Component {
   constructor(props) {

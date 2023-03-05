@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { ListItem } from './ListItem'
-import { CardPeople } from './Card/CardPeople'
+import { ListItem } from '../components/ListItem'
+import { CardPeople } from '../components/Card/CardPeople'
 
 export class People extends Component {
   constructor(props) {

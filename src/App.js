@@ -1,48 +1,43 @@
 import './App.scss'
-import React, { Component } from 'react'
-import { People } from './components/People'
-import { Starships } from './components/Starships'
-import { Planets } from './components/Planets'
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { People } from './pages/People'
+import { Starships } from './pages/Starships'
+import { Planets } from './pages/Planets'
+import { Login } from './components/Login'
+import { ErrorPage } from './pages/ErrorPage'
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      activeComponent: 'peoples',
-    }
-  }
-
-  showPeoples = () => {
-    this.setState({ activeComponent: 'peoples' })
-  }
-  showPlanets = () => {
-    this.setState({ activeComponent: 'planets' })
-  }
-  showStarships = () => {
-    this.setState({ activeComponent: 'starships' })
-  }
-
-  render() {
-    let activeComponent = 'peoples'
-
-    if (this.state.activeComponent === 'planets') {
-      activeComponent = <Planets />
-    } else if (this.state.activeComponent === 'starships') {
-      activeComponent = <Starships />
-    } else if (this.state.activeComponent === 'peoples') {
-      activeComponent = <People />
-    }
-    return (
+const App = () => {
+  // AuthContextProvider()
+  return (
+    <>
       <div className="App">
-        <div className="header">
-          <button onClick={this.showPeoples}>People</button>
-          <button onClick={this.showStarships}>Starships</button>
-          <button onClick={this.showPlanets}>Planets</button>
-        </div>
-        {activeComponent}
+        <Router>
+          <div className="header">
+            <Link to="/">
+              <button>People</button>
+            </Link>
+            <Link to="/Starships">
+              <button>Starships</button>
+            </Link>
+            <Link to="/Planets">
+              <button>Planets</button>
+            </Link>
+            <Link to="/Login">
+              <button>Login</button>
+            </Link>
+          </div>
+          <Routes>
+            <Route path="/" element={<People />} />
+            <Route path="/Starships" element={<Starships />} />
+            <Route path="/Planets" element={<Planets />} />
+            <Route path="/Login" element={<Login />} />
+            <Route path="/*" element={<ErrorPage />} />
+          </Routes>
+        </Router>
       </div>
-    )
-  }
+    </>
+  )
 }
 
 export default App
