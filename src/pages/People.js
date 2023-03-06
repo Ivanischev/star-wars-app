@@ -35,11 +35,14 @@ export function People() {
         {loading ? (
           <Loader />
         ) : (
-          <ul className="list">
-            {data.map((item, index) => (
-              <ListItem key={index} item={item} onClick={() => getHeroById(index + 1)} />
-            ))}
-          </ul>
+          <>
+            {/* <Loader /> */}
+            <ul className="list">
+              {data.map((item, index) => (
+                <ListItem key={index} item={item} onClick={() => getHeroById(index + 1)} />
+              ))}
+            </ul>
+          </>
         )}
         <CardPeople item={item} />
       </div>
