@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { ListItem } from '../components/ListItem'
 import { CardPeople } from '../components/Card/CardPeople'
-import { Login } from '../components/Login'
+import { Loader } from '../components/Loader'
 
 export function People() {
   const [data, setData] = useState([])
   const [item, setItem] = useState({})
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(false)
 
   useEffect(() => {
     setLoading(true)
@@ -34,7 +33,7 @@ export function People() {
       <h1>People</h1>
       <div className="row">
         {loading ? (
-          <i>x</i>
+          <Loader />
         ) : (
           <ul className="list">
             {data.map((item, index) => (
