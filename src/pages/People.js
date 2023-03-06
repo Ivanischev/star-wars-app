@@ -1,84 +1,49 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ListItem } from '../components/ListItem'
 import { CardPeople } from '../components/Card/CardPeople'
+import { Login } from '../components/Login'
 
-export class People extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      heroes: [],
-      person: null,
-      hasError: false,
-      isLoading: false,
+export function People() {
+  const [data, setData] = useState([])
+  const [item, setItem] = useState({})
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
+
+  useEffect(() => {
+    setLoading(true)
+    const fetchData = async () => {
+      const response = await fetch('https://swapi.dev/api/people/')
+      setLoading(false)
+      const result = await response.json()
+      setData(result.results)
     }
+    fetchData()
+  }, [setItem])
+
+  const getHeroById = (id) => {
+    const fetchItem = async () => {
+      const response = await fetch(`https://swapi.dev/api/people/${id}`)
+      const result = await response.json()
+      setItem(result)
+    }
+    fetchItem()
   }
 
-  getHeroes = () =>
-    fetch('https://swapi.dev/api/people/')
-      .then((response) => response.json())
-      .then((data) => this.setHeroes(data.results))
-      .catch((error) => this.setState({ error }))
-
-  setHeroes(data) {
-    this.setState({
-      heroes: [...data],
-    })
-  }
-
-  getHeroById = (id) => {
-    this.setState({ hasError: false })
-    fetch(`https://swapi.dev/api/people/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        if ('detail' in data) {
-          this.setState({ hasError: true })
-        } else this.setPerson(data)
-      })
-      .catch((error) => this.setState({ hasError: true }))
-  }
-
-  setPerson(data) {
-    this.setState({
-      person: {
-        name: data.name,
-        gender: data.gender,
-        birth_year: data.birth_year,
-        height: data.height,
-        mass: data.mass,
-        eye_color: data.eye_color,
-      },
-    })
-  }
-
-  componentDidMount() {
-    this.getHeroes()
-  }
-
-  render() {
-    let person = this.state.person
-    return (
-      <>
-        <h1>People</h1>
-        <div className="row">
+  return (
+    <>
+      <h1>People</h1>
+      <div className="row">
+        {loading ? (
+          <i>x</i>
+        ) : (
           <ul className="list">
-            {this.state.heroes.map((hero, index) => (
-              <ListItem key={index} name={hero.name} onClick={() => this.getHeroById(index + 1)} />
+            {data.map((item, index) => (
+              <ListItem key={index} item={item} onClick={() => getHeroById(index + 1)} />
             ))}
           </ul>
-          {this.state.hasError ? (
-            'Not Found'
-          ) : (
-            <CardPeople
-              name={person?.name}
-              gender={person?.gender}
-              birthYear={person?.birth_year}
-              height={person?.height}
-              mass={person?.mass}
-              eyeColor={person?.eye_color}
-            />
-          )}
-        </div>
-      </>
-    )
-  }
+        )}
+        <CardPeople item={item} />
+      </div>
+    </>
+  )
 }
