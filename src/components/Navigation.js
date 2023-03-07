@@ -1,21 +1,21 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 export const Navigation = () => {
   return (
     <>
-      <Link to="/">
-        <button className="btn btn-link">People</button>
-      </Link>
-      <Link to="/Starships">
-        <button className="btn btn-link">Starships</button>
-      </Link>
-      <Link to="/Planets">
-        <button className="btn btn-link">Planets</button>
-      </Link>
-      <Link to="/Login">
-        <button className="btn btn-primary">Login</button>
-      </Link>
+      <NavLink to="/" className="btn btn-link">
+        People
+      </NavLink>
+      <NavLink to="/Starships" className="btn btn-link">
+        Starships
+      </NavLink>
+      <NavLink to="/Planets" className="btn btn-link">
+        Planets
+      </NavLink>
+      <NavLink to="/Login" className="btn btn-primary">
+        Login
+      </NavLink>
     </>
   )
 }

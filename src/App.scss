@@ -14,7 +14,8 @@
 }
 
 a {
-  color: #61dafb;
+  color: orange;
+  text-decoration: none;
 }
 
 .header {
@@ -51,9 +52,18 @@ a {
     background-color: orange;
     color: #232323;
     &:hover {
+      color: #ff9800;
       background-color: #fff;
     }
+    & .active {
+      background-color: #fff;
+      color: #ff9800;
+    }
   }
+}
+
+.active {
+  color: #fff;
 }
 
 @keyframes App-logo-spin {
