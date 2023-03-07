@@ -36,7 +36,6 @@ export function People() {
           <Loader />
         ) : (
           <>
-            {/* <Loader /> */}
             <ul className="list">
               {data.map((item, index) => (
                 <ListItem key={index} item={item} onClick={() => getHeroById(index + 1)} />

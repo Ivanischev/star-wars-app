@@ -23,7 +23,7 @@ export function Starships() {
     const fetchItem = async () => {
       const response = await fetch(`https://swapi.dev/api/starships/${id}`)
       const result = await response.json()
-      setItem(result)
+      !response.ok ? setItem('') : setItem(result)
     }
     fetchItem()
   }
