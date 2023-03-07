@@ -19,9 +19,9 @@ export function Starships() {
     fetchData()
   }, [setItem])
 
-  const getStarshipById = (id) => {
+  const getStarshipByURL = (url) => {
     const fetchItem = async () => {
-      const response = await fetch(`https://swapi.dev/api/starships/${id}`)
+      const response = await fetch(url)
       const result = await response.json()
       !response.ok ? setItem('') : setItem(result)
     }
@@ -37,7 +37,7 @@ export function Starships() {
         ) : (
           <ul className="list">
             {data.map((item, index) => (
-              <ListItem key={index} item={item} onClick={() => getStarshipById(index + 1)} />
+              <ListItem key={index} item={item} onClick={() => getStarshipByURL(item.url)} />
             ))}
           </ul>
         )}

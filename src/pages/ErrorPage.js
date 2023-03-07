@@ -10,8 +10,14 @@ const ErrorPage = () => {
   return (
     <>
       <h1>This page does not exist!</h1>
-      <button onClick={goHomePage}>Back to Home</button>
-      <button onClick={() => navigate(-1)}>Back</button>
+      <div className="btn-group">
+        <button className="btn btn-primary" onClick={goHomePage}>
+          Back to Home
+        </button>
+        <button className="btn" onClick={() => navigate(-1)}>
+          Back
+        </button>
+      </div>
     </>
   )
 }

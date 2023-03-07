@@ -19,9 +19,9 @@ export function People() {
     fetchData()
   }, [setItem])
 
-  const getHeroById = (id) => {
+  const getHeroByURL = (url) => {
     const fetchItem = async () => {
-      const response = await fetch(`https://swapi.dev/api/people/${id}`)
+      const response = await fetch(url)
       const result = await response.json()
       setItem(result)
     }
@@ -38,7 +38,7 @@ export function People() {
           <>
             <ul className="list">
               {data.map((item, index) => (
-                <ListItem key={index} item={item} onClick={() => getHeroById(index + 1)} />
+                <ListItem key={index} item={item} onClick={() => getHeroByURL(item.url)} />
               ))}
             </ul>
           </>

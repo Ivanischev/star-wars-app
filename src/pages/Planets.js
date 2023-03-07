@@ -20,9 +20,9 @@ export function Planets() {
     fetchData()
   }, [setItem])
 
-  const getPlanetById = (id) => {
+  const getPlanetByURL = (url) => {
     const fetchItem = async () => {
-      const response = await fetch(`https://swapi.dev/api/planets/${id}`)
+      const response = await fetch(url)
       const result = await response.json()
       setItem(result)
     }
@@ -38,7 +38,7 @@ export function Planets() {
         ) : (
           <ul className="list">
             {data.map((item, index) => (
-              <ListItem key={index} item={item} onClick={() => getPlanetById(index + 1)} />
+              <ListItem key={index} item={item} onClick={() => getPlanetByURL(item.url)} />
             ))}
           </ul>
         )}
