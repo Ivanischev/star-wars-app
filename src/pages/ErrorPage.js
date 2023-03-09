@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button } from '../components/Button'
 import { useNavigate } from 'react-router-dom'
 
 const ErrorPage = () => {
@@ -11,12 +12,8 @@ const ErrorPage = () => {
     <>
       <h1>This page does not exist!</h1>
       <div className="btn-group">
-        <button className="btn btn-primary" onClick={goHomePage}>
-          Back to Home
-        </button>
-        <button className="btn" onClick={() => navigate(-1)}>
-          Back
-        </button>
+        <Button text="Back to Home" className={'btn btn-primary'} onClick={goHomePage} />
+        <Button text="Back" className={'btn'} onClick={() => navigate(-1)} />
       </div>
     </>
   )

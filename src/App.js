@@ -6,18 +6,16 @@ import { Starships } from './pages/Starships'
 import { Planets } from './pages/Planets'
 import { Login } from './pages/Login'
 import { ErrorPage } from './pages/ErrorPage'
-import { Navigation } from './components/Navigation'
+import { Header } from './components/Header'
+import { Home } from './pages/Home'
 
 const App = () => {
-  // AuthContextProvider()
   return (
     <>
       <div className="App">
         <Router>
-          <div className="header">
-            <Navigation />
-          </div>
-
+          <Header />
+          <Home />
           <Routes>
             <Route path="/" element={<People />} />
             <Route path="/Starships" element={<Starships />} />
