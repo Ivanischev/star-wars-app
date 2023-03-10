@@ -15,14 +15,14 @@ export const AuthProvider = ({ children }) => {
     setToken(token)
   }
 
-  //   const handleLogout = () => {
-  //     setToken(null)
-  //   }
+  const handleLogout = () => {
+    setToken(null)
+  }
 
   const value = {
     token,
     onLogin: handleLogin,
-    // onLogout: handleLogout,
+    onLogout: handleLogout,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

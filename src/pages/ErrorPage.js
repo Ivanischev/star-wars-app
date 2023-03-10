@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button } from '../components/common/Button'
+import { Container } from '../components/common/Container'
 import { useNavigate } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 
@@ -10,7 +11,7 @@ const ErrorPage = () => {
   }
 
   return (
-    <>
+    <Container>
       <h1>This page does not exist!</h1>
       <p>
         Make sure you are <b>Logged In</b>
@@ -22,7 +23,7 @@ const ErrorPage = () => {
           Login
         </NavLink>
       </div>
-    </>
+    </Container>
   )
 }
 

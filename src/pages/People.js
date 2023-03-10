@@ -4,13 +4,10 @@ import { CardPeople } from '../components/Card/CardPeople'
 import { Loader } from '../components/common/Loader'
 import { BackButton } from '../components/common/BackButton'
 import { Row } from '../components/common/Row'
+import { Container } from '../components/common/Container'
 import { Title } from '../components/common/Title'
-import { useAuth } from '../components/helpers/useAuth'
 
 export function People() {
-  // const token = useContext(AuthContext)
-  const { token } = useAuth()
-
   const [data, setData] = useState([])
   const [item, setItem] = useState({})
   const [loading, setLoading] = useState(false)
@@ -36,12 +33,12 @@ export function People() {
   }
 
   return (
-    <>
+    <Container>
       <Row>
         <BackButton />
       </Row>
       <Title text="People" />
-      <div className="row">
+      <Row>
         {loading ? (
           <Loader />
         ) : (
@@ -54,7 +51,7 @@ export function People() {
           </>
         )}
         <CardPeople item={item} />
-      </div>
-    </>
+      </Row>
+    </Container>
   )
 }

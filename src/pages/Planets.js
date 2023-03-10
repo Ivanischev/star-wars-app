@@ -5,12 +5,10 @@ import { CardPlanet } from '../components/Card/CardPlanet'
 import { Loader } from '../components/common/Loader'
 import { Title } from '../components/common/Title'
 import { Row } from '../components/common/Row'
+import { Container } from '../components/common/Container'
 import { BackButton } from '../components/common/BackButton'
-import { useAuth } from '../components/helpers/useAuth'
 
 export function Planets() {
-  const { token } = useAuth()
-
   const [data, setData] = useState([])
   const [item, setItem] = useState({})
   const [loading, setLoading] = useState(false)
@@ -37,22 +35,24 @@ export function Planets() {
 
   return (
     <>
-      <Row>
-        <BackButton />
-      </Row>
-      <Title text="Planets" />
-      <div className="row">
-        {loading ? (
-          <Loader />
-        ) : (
-          <ul className="list">
-            {data.map((item, index) => (
-              <ListItem key={index} item={item} onClick={() => getPlanetByURL(item.url)} />
-            ))}
-          </ul>
-        )}
-        <CardPlanet item={item} />
-      </div>
+      <Container>
+        <Row>
+          <BackButton />
+        </Row>
+        <Title text="Planets" />
+        <Row>
+          {loading ? (
+            <Loader />
+          ) : (
+            <ul className="list">
+              {data.map((item, index) => (
+                <ListItem key={index} item={item} onClick={() => getPlanetByURL(item.url)} />
+              ))}
+            </ul>
+          )}
+          <CardPlanet item={item} />
+        </Row>
+      </Container>
     </>
   )
 }
