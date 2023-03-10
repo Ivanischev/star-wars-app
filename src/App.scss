@@ -2,6 +2,14 @@
   box-sizing: border-box;
 }
 
+$bg-dark: #303030;
+$border-dark: #545454;
+$text-dark-theme: #fff;
+
+$bg-light: #535e63;
+$border-light: #828282;
+$text-light-theme: #000;
+
 .App {
   text-align: center;
   background-color: #232323;
@@ -23,8 +31,22 @@ a {
   padding: 15px 0;
   justify-content: flex-end;
   min-width: 100%;
-  background: #303030;
-  border-bottom: 0.5px solid #545454;
+  background: $bg-dark;
+  border-bottom: 0.5px solid $border-dark;
+}
+.header-light {
+  background: $bg-light;
+  border-color: $border-light;
+  color: $text-light-theme;
+  .active {
+    color: $text-light-theme;
+  }
+}
+
+.navigation {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .logo {
@@ -51,7 +73,7 @@ a {
     color: orange;
     background: transparent;
     &:hover {
-      color: #fff;
+      color: $text-dark-theme;
     }
   }
 
@@ -60,10 +82,10 @@ a {
     color: #232323;
     &:hover {
       color: #ff9800;
-      background-color: #fff;
+      background-color: $text-dark-theme;
     }
     &.active {
-      background-color: #fff;
+      background-color: $text-dark-theme;
       color: #232323;
     }
   }
@@ -99,10 +121,21 @@ a {
       text-decoration: underline;
     }
   }
+
+  &-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 45px;
+    margin-left: 15px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
 }
 
 .active {
-  color: #fff;
+  color: $text-dark-theme;
 }
 
 .link {
@@ -160,8 +193,8 @@ a {
     width: 100%;
     align-items: center;
     display: flex;
-    border: 0.5px solid #545454;
-    background-color: #303030;
+    border: 0.5px solid $border-dark;
+    background-color: $bg-dark;
     margin-top: -1px;
     &:first-child {
       border-top-left-radius: 3px;
@@ -173,7 +206,7 @@ a {
     }
   }
   button {
-    color: #fff;
+    color: $text-dark-theme;
     border: none;
     background-color: transparent;
     padding: 10px 20px;
@@ -186,13 +219,13 @@ a {
 
 .card {
   text-align: left;
-  background-color: #303030;
+  background-color: $bg-dark;
   padding: 15px;
   max-width: 350px;
   width: 100%;
-  border: 0.5px solid #545454;
+  border: 0.5px solid $border-dark;
   p {
-    border-bottom: 0.5px solid #545454;
+    border-bottom: 0.5px solid $border-dark;
     margin: 5px 0;
     padding: 5px 0 10px;
     &:last-child {
