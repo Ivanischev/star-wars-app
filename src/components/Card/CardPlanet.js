@@ -1,15 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export class CardPlanet extends Component {
-  render() {
-    return (
-      <div className="card">
-        <h3>{this.props.name}</h3>
-        <p>Rotation period: {this.props.rotation_period}</p>
-        <p>Population: {this.props.population}</p>
-        <p>Terrain: {this.props.terrain}</p>
-        <p>Climate: {this.props.climate}</p>
-      </div>
-    )
-  }
+export const CardPlanet = ({ item }) => {
+  return (
+    <div className="card">
+      <h3>{item.name}</h3>
+      <p>Rotation period: {item.rotation_period}</p>
+      <p>Population: {item.population}</p>
+      <p>Terrain: {item.terrain}</p>
+      <p>Climate: {item.climate}</p>
+    </div>
+  )
 }

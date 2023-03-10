@@ -14,39 +14,103 @@
 }
 
 a {
-  color: #61dafb;
+  color: orange;
+  text-decoration: none;
 }
 
 .header {
   display: inline-flex;
-  padding: 15px;
+  padding: 15px 0;
   justify-content: flex-end;
   min-width: 100%;
   background: #303030;
   border-bottom: 0.5px solid #545454;
-  button {
-    font-size: 15px;
-    font-weight: 600;
-    background: transparent;
+}
+
+.logo {
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+.btn-group {
+  display: inline-flex;
+  gap: 12px;
+}
+
+.btn {
+  position: relative;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  padding: 5px 10px;
+  min-width: 80px;
+  min-height: 30px;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  &-link {
     color: orange;
-    border: none;
-    padding: 5px 10px;
-    min-width: 70px;
-    cursor: pointer;
+    background: transparent;
     &:hover {
-      // border-bottom: 2px solid orange;
-      // opacity: 0.8;
       color: #fff;
+    }
+  }
+
+  &-primary {
+    background-color: orange;
+    color: #232323;
+    &:hover {
+      color: #ff9800;
+      background-color: #fff;
+    }
+    &.active {
+      background-color: #fff;
+      color: #232323;
+    }
+  }
+
+  &-success {
+    background-color: lawngreen;
+  }
+
+  &-danger {
+    background-color: red;
+  }
+
+  &-back {
+    font-size: 12px;
+    background-color: transparent;
+    color: orange;
+    text-transform: uppercase;
+    padding-left: 20px;
+    margin-top: 15px;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 7px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 4px 6px 4px 0;
+      border-color: transparent orange transparent transparent;
+    }
+    &:hover {
+      text-decoration: underline;
     }
   }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.active {
+  color: #fff;
+}
+
+.link {
+  &-bold {
+    font-weight: bold;
   }
-  to {
-    transform: rotate(360deg);
+  &-underline {
+    text-decoration: underline;
   }
 }
 
@@ -63,6 +127,24 @@ a {
       margin-bottom: 30px;
     }
   }
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 920px;
+}
+
+.container-fluid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .list {
@@ -117,4 +199,15 @@ a {
       border-bottom: none;
     }
   }
+}
+
+.loader {
+  position: relative;
+  margin-left: 20%;
+  top: 140px;
+}
+
+// pages
+.home {
+  max-width: 600px;
 }

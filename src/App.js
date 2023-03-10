@@ -1,48 +1,60 @@
 import './App.scss'
-import React, { Component } from 'react'
-import { People } from './components/People'
-import { Starships } from './components/Starships'
-import { Planets } from './components/Planets'
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { People } from './pages/People'
+import { Starships } from './pages/Starships'
+import { Planets } from './pages/Planets'
+import { Login } from './pages/Login'
+import { ErrorPage } from './pages/ErrorPage'
+import { Header } from './components/Header'
+import { Home } from './pages/Home'
+import { AuthProvider } from './components/helpers/AuthProvider'
+import { ProtectedRoute } from './components/helpers/ProtectedRoute'
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      activeComponent: 'peoples',
-    }
-  }
+export const AuthContext = React.createContext(null)
 
-  showPeoples = () => {
-    this.setState({ activeComponent: 'peoples' })
-  }
-  showPlanets = () => {
-    this.setState({ activeComponent: 'planets' })
-  }
-  showStarships = () => {
-    this.setState({ activeComponent: 'starships' })
-  }
-
-  render() {
-    let activeComponent = 'peoples'
-
-    if (this.state.activeComponent === 'planets') {
-      activeComponent = <Planets />
-    } else if (this.state.activeComponent === 'starships') {
-      activeComponent = <Starships />
-    } else if (this.state.activeComponent === 'peoples') {
-      activeComponent = <People />
-    }
-    return (
+const App = () => {
+  return (
+    <>
       <div className="App">
-        <div className="header">
-          <button onClick={this.showPeoples}>People</button>
-          <button onClick={this.showStarships}>Starships</button>
-          <button onClick={this.showPlanets}>Planets</button>
-        </div>
-        {activeComponent}
+        <AuthProvider>
+          <Router>
+            <Header />
+
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route
+                path="/People"
+                element={
+                  <ProtectedRoute>
+                    <People />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/Starships"
+                element={
+                  <ProtectedRoute>
+                    <Starships />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/Planets"
+                element={
+                  <ProtectedRoute>
+                    <Planets />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/Login" element={<Login />} />
+              <Route path="/*" element={<ErrorPage />} />
+            </Routes>
+          </Router>
+        </AuthProvider>
       </div>
-    )
-  }
+    </>
+  )
 }
 
 export default App
