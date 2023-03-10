@@ -33,6 +33,7 @@ a {
 }
 
 .btn {
+  position: relative;
   font-size: 15px;
   font-weight: 600;
   border: none;
@@ -48,6 +49,7 @@ a {
       color: #fff;
     }
   }
+
   &-primary {
     background-color: orange;
     color: #232323;
@@ -55,9 +57,37 @@ a {
       color: #ff9800;
       background-color: #fff;
     }
-    & .active {
+    &.active {
       background-color: #fff;
-      color: #ff9800;
+      color: #232323;
+    }
+  }
+
+  &-success {
+    background-color: lawngreen;
+  }
+
+  &-back {
+    font-size: 12px;
+    padding-left: 20px;
+    background-color: transparent;
+    color: orange;
+    text-transform: uppercase;
+    padding-left: 20px;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 7px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 4px 6px 4px 0;
+      border-color: transparent orange transparent transparent;
+    }
+    &:hover {
+      text-decoration: underline;
     }
   }
 }
@@ -66,12 +96,12 @@ a {
   color: #fff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.link {
+  &-bold {
+    font-weight: bold;
   }
-  to {
-    transform: rotate(360deg);
+  &-underline {
+    text-decoration: underline;
   }
 }
 
@@ -148,4 +178,9 @@ a {
   position: relative;
   margin-left: 20%;
   top: 140px;
+}
+
+// pages
+.home {
+  max-width: 600px;
 }

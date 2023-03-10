@@ -2,9 +2,15 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { ListItem } from '../components/ListItem'
 import { CardPlanet } from '../components/Card/CardPlanet'
-import { Loader } from '../components/Loader'
+import { Loader } from '../components/common/Loader'
+import { Title } from '../components/common/Title'
+import { Row } from '../components/common/Row'
+import { BackButton } from '../components/common/BackButton'
+import { useAuth } from '../components/helpers/useAuth'
 
 export function Planets() {
+  const { token } = useAuth()
+
   const [data, setData] = useState([])
   const [item, setItem] = useState({})
   const [loading, setLoading] = useState(false)
@@ -31,7 +37,10 @@ export function Planets() {
 
   return (
     <>
-      <h1>Planets</h1>
+      <Row>
+        <BackButton />
+      </Row>
+      <Title text="Planets" />
       <div className="row">
         {loading ? (
           <Loader />

@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { ListItem } from '../components/ListItem'
 import { CardStarship } from '../components/Card/CardStarship'
-import { Loader } from '../components/Loader'
+import { Loader } from '../components/common/Loader'
+import { Row } from '../components/common/Row'
+import { Title } from '../components/common/Title'
+import { BackButton } from '../components/common/BackButton'
+import { useAuth } from '../components/helpers/useAuth'
 
 export function Starships() {
+  const { token } = useAuth()
+
   const [data, setData] = useState([])
   const [item, setItem] = useState({})
   const [loading, setLoading] = useState(false)
@@ -30,7 +36,10 @@ export function Starships() {
 
   return (
     <>
-      <h1>Starships</h1>
+      <Row>
+        <BackButton />
+      </Row>
+      <Title text="Starships" />
       <div className="row">
         {loading ? (
           <Loader />
