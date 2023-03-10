@@ -4,6 +4,7 @@ import { useAuth } from '../components/helpers/useAuth'
 
 export const Navigation = () => {
   const { token } = useAuth()
+
   return (
     <div className="navigation">
       <NavLink to="/" className="btn btn-link">
@@ -24,7 +25,6 @@ export const Navigation = () => {
       ) : (
         ''
       )}
-
       <NavLink to="/Login" className="btn btn-primary">
         {token ? 'Logout' : 'Login'}
       </NavLink>
